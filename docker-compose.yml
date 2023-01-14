@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  php7_4:
+    container_name: php7_4
+    build:
+      context: ./php74
+    ports:
+      - '8080:80'
+      - '9200:9200'
+      - '433:433'
+    volumes:
+      - ./app:/var/www/my_app
+    depends_on:
+      - db_mysql8
+
+  db_mysql8:
+    container_name: db_mysql8
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql8:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_app_db
+      MYSQL_USER: gilvanei
+      MYSQL_PASSWORD: tec20_my_app
