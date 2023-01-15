@@ -122,6 +122,6 @@ symfony new ./
 ### Start Symfony server on additional port [9000]
 
 ```
-symfony server:start –port 9000 –d
+symfony server:start -port 9000 -d
 ```
 
